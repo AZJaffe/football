@@ -34,7 +34,9 @@ FLAGS = flags.FLAGS
 flags.DEFINE_string('level', 'academy_empty_goal_close',
                     'Defines type of problem being solved')
 flags.DEFINE_enum('state', 'extracted_stacked', ['extracted',
-                                                 'extracted_stacked'],
+                                                 'extracted_stacked',
+                                                 'pixels',
+                                                 'pixels_stacked'],
                   'Observation to be used for training.')
 flags.DEFINE_enum('reward_experiment', 'scoring',
                   ['scoring', 'scoring,checkpoints'],
