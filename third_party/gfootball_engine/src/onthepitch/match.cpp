@@ -243,10 +243,6 @@ Match::Match(MatchData *matchData, const std::vector<AIControlledKeyboard *> &co
   // GUI
   Gui2Root *root = menuTask->GetWindowManager()->GetRoot();
 
-  radar = new Gui2Radar(menuTask->GetWindowManager(), "game_radar", 38, 78, 24, 18, this, matchData->GetTeamData(0).GetColor1(), matchData->GetTeamData(0).GetColor2(), matchData->GetTeamData(1).GetColor1(), matchData->GetTeamData(1).GetColor2());
-  root->AddView(radar);
-  radar->Show();
-
   scoreboard = new Gui2ScoreBoard(menuTask->GetWindowManager(), this);
   root->AddView(scoreboard);
   scoreboard->Show();
@@ -302,8 +298,6 @@ void Match::Exit() {
 
   scene3D->DeleteNode(GetDynamicNode());
   scene3D->DeleteNode(stadiumNode);
-  radar->Exit();
-  delete radar;
 
   scoreboard->Exit();
   delete scoreboard;
@@ -1099,7 +1093,6 @@ void Match::Put() {
   timeStr += int_to_str(seconds);
   scoreboard->SetTimeStr(timeStr);
   if (messageCaptionRemoveTime_ms <= actualTime_ms) messageCaption->Hide();
-  radar->Put();
   UpdateGoalNetting(GetBall()->BallTouchesNet());
 }
 
