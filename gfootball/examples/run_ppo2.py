@@ -38,6 +38,8 @@ flags.DEFINE_enum('state', 'extracted_stacked', ['extracted',
                                                  'pixels',
                                                  'pixels_stacked'],
                   'Observation to be used for training.')
+flags.DEFINE.integer('height', 72, 'height of the state representation')
+flags.DEFINE.integer('width', 96, 'width of the state representation')
 flags.DEFINE_enum('reward_experiment', 'scoring',
                   ['scoring', 'scoring,checkpoints'],
                   'Reward to be used for training.')
@@ -78,6 +80,7 @@ def create_single_football_env(iprocess):
       write_goal_dumps=FLAGS.dump_scores and (iprocess == 0),
       write_full_episode_dumps=FLAGS.dump_full_episodes and (iprocess == 0),
       render=FLAGS.render and (iprocess == 0),
+      channel_dimensions=(FLAGS.width,FLAGS.height),
       dump_frequency=50 if FLAGS.render and iprocess == 0 else 0)
   env = monitor.Monitor(env, logger.get_dir() and os.path.join(logger.get_dir(),
                                                                str(iprocess)))
