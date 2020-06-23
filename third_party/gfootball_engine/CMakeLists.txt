@@ -15,6 +15,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules")
 
 project(gameplayfootball)
 
+string(APPEND CMAKE_SHARED_LINKER_FLAGS " -Wl,--no-as-needed")
+
 set (CMAKE_CXX_STANDARD 14)
 
 if(UNIX)
@@ -125,6 +127,7 @@ add_library(gamelib ${GAME_SOURCES} ${GAME_HEADERS})
 add_library(menulib ${MENU_SOURCES} ${MENU_HEADERS})
 add_library(datalib ${DATA_SOURCES} ${DATA_HEADERS})
 
+string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 set(LIBRARIES gamelib menulib datalib blunted2
    Boost::filesystem Boost::system Boost::thread Boost::${BOOST_PYTHON_VERSION} ${PYTHON_LIBRARY}
    ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${SDL2_GFX_LIBRARIES}
