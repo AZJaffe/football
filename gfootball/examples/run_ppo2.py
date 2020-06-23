@@ -38,8 +38,8 @@ flags.DEFINE_enum('state', 'extracted_stacked', ['extracted',
                                                  'pixels',
                                                  'pixels_stacked'],
                   'Observation to be used for training.')
-flags.DEFINE.integer('height', 72, 'height of the state representation')
-flags.DEFINE.integer('width', 96, 'width of the state representation')
+flags.DEFINE_integer('height', 72, 'height of the state representation')
+flags.DEFINE_integer('width', 96, 'width of the state representation')
 flags.DEFINE_enum('reward_experiment', 'scoring',
                   ['scoring', 'scoring,checkpoints'],
                   'Reward to be used for training.')
